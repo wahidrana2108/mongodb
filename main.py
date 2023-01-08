@@ -9,8 +9,17 @@ app = Flask(__name__)
 
 app.secret_key = 'no secret key'
 
-@app.route("/registration", methods=["GET","POST"])
+@app.route("/", methods=["GET","POST"])
 def registration():
+    if request.method=="POST":
+        form_data = dict(request.form)
+        user = form_data["username"]
+        password = form_data["password"]
+        email = form_data["email"]
+        phone = form_data["phone"]
+
+        details_table.insert_one({"username": user, "password": password, "email address": email, "phone": phone})
+
     return render_template("registration.html", **locals())
 
 

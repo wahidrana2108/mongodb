@@ -12,7 +12,7 @@
 <body>
     <div class="container mt-5">
         <h5 class="text-center fw-bolder mb-3">Registration From</h5>
-        <form onsubmit="return validatePassword(this.password.value)">
+        <form action="/" method="post" onsubmit="return validatePassword(this.password.value)">
             <input type="text" class="form-control mb-3" name="username" placeholder="Enter UserName" required>
             <input type="password" class="form-control mb-3" name="password" placeholder="Enter Password" required>
             <p id="error-pass" class="text-danger"></p>
@@ -36,7 +36,7 @@
                 document.getElementById('error-pass').innerHTML = 'Password must be 6 digits long';
                 return false;
             }
-            if (password !== confirmPassword) {
+            if (password.value !== confirmPassword.value) {
                 document.getElementById('error-confirmPassword').innerHTML = 'Recheck your password';
                 return false;
             }
